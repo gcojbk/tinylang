@@ -8,3 +8,7 @@ ContinuationIndentWidth: 4
 AlwaysBreakTemplateDeclarations : false
 DerivePointerAlignment : false
 SpacesBeforeTrailingComments: 2
+AllowShortBlocksOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
