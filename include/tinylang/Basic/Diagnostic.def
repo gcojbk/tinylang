@@ -1,0 +1,7 @@
+#ifndef DIAG
+#define DIAG(ID, Level, Msg)
+#endif
+
+DIAG(err_sym_declared, Error, "Symbol {0} already declared")
+
+#undef DIAG
