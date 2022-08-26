@@ -33,5 +33,3 @@ const char* tok::GetKeywordSpelling(TokenKind kind) {
     }
     return nullptr;
 }
-
-

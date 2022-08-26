@@ -26,4 +26,3 @@ llvm::SourceMgr::DiagKind
 diag::DiagnosticEngine::GetDiagnosticKind(unsigned diag_id) {
     return DiagnosticKind[diag_id];
 }
-
