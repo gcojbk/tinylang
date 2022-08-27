@@ -1,1 +1,1 @@
-add_tinylang_library(tinylangBasic Version.cpp Diagnostic.cc)
+add_tinylang_library(tinylangBasic Version.cc Diagnostic.cc TokenKinds.cc)

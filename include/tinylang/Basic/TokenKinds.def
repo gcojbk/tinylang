@@ -18,6 +18,12 @@ TOK(integer_literal)
 
 PUNCTUATOR(plus, "+")
 PUNCTUATOR(minus, "-")
+PUNCTUATOR(star, "*")
+PUNCTUATOR(slash, "/")
+PUNCTUATOR(less, "<")
+PUNCTUATOR(greater, ">")
+PUNCTUATOR(less_equal, "<=")
+PUNCTUATOR(greater_equal, ">=")
 
 KEYWORD(BEGIN, KEYALL)
 KEYWORD(CONST, KEYALL)
