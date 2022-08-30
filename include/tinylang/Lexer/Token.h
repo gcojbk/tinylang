@@ -12,6 +12,10 @@ class Token {
     friend class Lexer;
 
  public:
+    const char* GetText() const {
+        return ptr_;
+    }
+
     tok::TokenKind GetKind() const {
         return kind_;
     }

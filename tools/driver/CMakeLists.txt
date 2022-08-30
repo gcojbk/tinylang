@@ -8,4 +8,6 @@ add_tinylang_tool(tinylang
 
 target_link_libraries(tinylang PRIVATE
     tinylangBasic
+    tinylangLexer
+    tinylangParser
 )

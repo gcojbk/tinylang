@@ -3,6 +3,7 @@
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Support/CommandLine.h"
 #include "tinylang/Basic/Version.h"
+#include "tinylang/Parser/Parser.h"
 
 
 static llvm::cl::opt<std::string> Input(llvm::cl::Positional,
@@ -11,11 +12,11 @@ static llvm::cl::opt<std::string> Input(llvm::cl::Positional,
 
 
 int main(int argc, const char** argv) {
-    // llvm::InitLLVM X(argc, argv);
-    // llvm::cl::ParseCommandLineOptions(argc, argv, "tinylang - the expression compiler\n");
-    // Lexer lexer(Input);
-    // Parser parser(lexer);
-    // auto node = parser.Parse();
+    llvm::InitLLVM X(argc, argv);
+    llvm::cl::ParseCommandLineOptions(argc, argv, "tinylang - the expression compiler\n");
+    tinylang::Lexer lexer(Input);
+    tinylang::Parser parser(lexer);
+    [[maybe_unused]]auto node = parser.Parse();
     // if (!node || parser.HasError()) {
     //     llvm::errs() << "Syntax errors occured\n";
     //     return 1;

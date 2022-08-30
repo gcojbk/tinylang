@@ -153,7 +153,7 @@ void Lexer::String(Token& token) {
 }
 
 void Lexer::Comment(Token& token) {
-
+    /// TODO: support comment parser
 }
 
 void Lexer::FormToken(Token& token, const char* tokEnd, tok::TokenKind kind) {
