@@ -44,11 +44,6 @@ class Parser {
     }
 
  private:
-   Expr *ParseExpr();
-   Expr *ParseTerm();
-   Expr *ParseFactor();
-
- private:
     Lexer& lexer_;
     Token token_;
     bool  has_error_;
