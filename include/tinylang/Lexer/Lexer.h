@@ -8,18 +8,13 @@
 namespace tinylang {
 class KeywordFilter {
  public:
-    void AddKeyword(llvm::StringRef keyword, tok::TokenKind token_code) {
-        keyword_table_.insert({keyword, token_code});
-    }
+   void AddKeyword(llvm::StringRef keyword, tok::TokenKind token_code);
 
-    void AddKeyWords() {
-#define KEYWORDS(NAME, FLAGS) AddKeyword(llvm::StringRef(#NAME), tok::kw_##NAME);
-#include "tinylang/Basic/TokenKinds.def"
-#undef  KEYWORDS
-    }
+   void AddKeyWords();
 
-    tok::TokenKind GetKeyword(llvm::StringRef name,
-                        tok::TokenKind default_token_code = tok::TokenKind::unknown) {
+   tok::TokenKind
+   GetKeyword(llvm::StringRef name,
+              tok::TokenKind default_token_code = tok::TokenKind::unknown) {
         auto ret = default_token_code;
         auto findit = keyword_table_.find(name);
         if (findit != keyword_table_.end()) {
@@ -43,8 +38,12 @@ class Lexer {
     void Next(Token& token);
 
  private:
+    void Identifier(Token& token);
+    void Number(Token& token);
+    void String(Token& token);
+    void Comment(Token& token);
+
     void FormToken(Token& token, const char* tokEnd, tok::TokenKind kind);
-    void FormTokenWithChars(Token& token, const char* tokEnd, tok::TokenKind kind);
 
  private:
     const char* buffer_start_;
