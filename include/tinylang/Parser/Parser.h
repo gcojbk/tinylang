@@ -1,6 +1,8 @@
 #pragma once
 
-#include "tinylang/AST/AST.h"
+#include "tinylang/AST/Decl.h"
+#include "tinylang/AST/Expr.h"
+#include "tinylang/AST/Stmt.h"
 #include "tinylang/Lexer/Lexer.h"
 #include "llvm/Support/raw_ostream.h"
 
