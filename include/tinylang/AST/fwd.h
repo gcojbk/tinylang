@@ -15,6 +15,9 @@ class ProcedureDecl;
 /// expression
 class Expr;
 class InfixExpr;
+class PrefixExpr;
+class IntLiteral;
+class StringLiteral;
 
 /// statement
 class Stmt;

@@ -79,4 +79,42 @@ class InfixExpr : public Expr {
     OperatorInfo op_;
 };
 
+class PrefixExpr : public Expr {
+ public:
+    PrefixExpr(Expr* expr, OperatorInfo op, TypeDecl* type)
+        : Expr(EK_Prefix, type), expr_(expr), op_(op) {}
+
+ public:
+    Expr* GetExpr() {
+        return expr_;
+    }
+
+    const OperatorInfo& GetOperatorInfo() {
+        return op_;
+    }
+
+ private:
+    Expr* expr_;
+    OperatorInfo op_;
+};
+
+class IntLiteral : public Expr {
+ public:
+    IntLiteral(int val, TypeDecl* type) : Expr(EK_Int, type), val_(val) {}
+
+ public:
+    int GetIntVal() {
+        return val_;
+    }
+
+ private:
+    int val_;
+
+};
+
+
+class StringLiteral : public Expr {
+
+
+};
 }  // namespace tinylang
