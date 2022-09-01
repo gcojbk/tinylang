@@ -1,6 +1,7 @@
 #pragma once
 
 #include "tinylang/AST/AST.h"
+#include "tinylang/AST/Decl.h"
 
 namespace tinylang {
 class Expr;
@@ -33,6 +34,7 @@ class Expr : public AST {
         EK_Prefix,
         EK_Int,
         EK_Bool,
+        EK_String,
         EK_Var,
         EK_Const,
         EK_Func,
@@ -98,23 +100,63 @@ class PrefixExpr : public Expr {
     OperatorInfo op_;
 };
 
-class IntLiteral : public Expr {
+class IntegerLiteral : public Expr {
  public:
-    IntLiteral(int val, TypeDecl* type) : Expr(EK_Int, type), val_(val) {}
+    IntegerLiteral(llvm::SMLoc loc, llvm::APSInt& val, TypeDecl* type)
+        : Expr(EK_Int, type), loc_(loc), val_(val) {}
 
  public:
-    int GetIntVal() {
+    llvm::APSInt GetValue() {
         return val_;
     }
 
  private:
-    int val_;
-
+    llvm::SMLoc loc_;
+    llvm::APSInt val_;
 };
 
+class BooleanLiteral : public Expr {
+ public:
+    BooleanLiteral(bool val, TypeDecl* type)
+        : Expr(EK_Bool, type), val_(val) {}
+
+ public:
+    bool GetValue() {
+        return val_;
+    }
+
+ private:
+    bool val_;
+};
 
 class StringLiteral : public Expr {
+ public:
+    StringLiteral(llvm::SMLoc loc, llvm::StringRef& val, TypeDecl* type)
+        : Expr(EK_String, type), loc_(loc), val_(val) {}
 
+ public:
+    llvm::StringRef GetValue() {
+        return val_;
+    }
 
+ private:
+    llvm::SMLoc loc_;
+    llvm::StringRef val_;
+};
+
+class VariableAccess : public Expr {
+ public:
+    explicit VariableAccess(VariableDecl* var)
+        : Expr(EK_Var, var->GetType()), var_(var) {}
+    explicit VariableAccess(FormalParameterDecl* var)
+        : Expr(EK_Var, var->GetType()), var_(var) {}
+
+ public:
+    Decl* GetDecl() {
+        return var_;
+    }
+
+ private:
+    Decl* var_;
 };
 }  // namespace tinylang

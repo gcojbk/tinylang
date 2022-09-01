@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "llvm/ADT/SmallVector.h"
+#include "llvm/ADT/APSInt.h"
 #include "llvm/ADT/StringRef.h"
 #include "llvm/Support/SMLoc.h"
 #include "tinylang/Lexer/Token.h"

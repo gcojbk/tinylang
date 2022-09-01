@@ -16,8 +16,10 @@ class ProcedureDecl;
 class Expr;
 class InfixExpr;
 class PrefixExpr;
-class IntLiteral;
+class IntegerLiteral;
+class BooleanLiteral;
 class StringLiteral;
+class VariableAccess;
 
 /// statement
 class Stmt;
