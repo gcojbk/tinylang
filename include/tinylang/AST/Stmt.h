@@ -3,8 +3,6 @@
 #include "tinylang/AST/AST.h"
 
 namespace tinylang {
-class Stmt;
-
 class Stmt : public AST {
  public:
     enum StmtKind {

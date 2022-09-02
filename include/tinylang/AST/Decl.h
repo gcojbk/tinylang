@@ -3,15 +3,6 @@
 #include "tinylang/AST/AST.h"
 
 namespace tinylang {
-class Decl;
-class ModuleDecl;
-class ConstantDecl;
-class TypeDecl;
-class VariableDecl;
-class FormalParameterDecl;
-class ProcedureDecl;
-
-
 class Decl : public AST {
  public:
     enum DeclKind {

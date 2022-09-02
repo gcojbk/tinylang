@@ -4,8 +4,6 @@
 #include "tinylang/AST/Decl.h"
 
 namespace tinylang {
-class Expr;
-
 class OperatorInfo {
  public:
     OperatorInfo()
