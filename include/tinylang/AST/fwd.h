@@ -20,9 +20,13 @@ class IntegerLiteral;
 class BooleanLiteral;
 class StringLiteral;
 class VariableAccess;
+class ConstantDecl;
+class FunctionCallExpr;
 
 /// statement
 class Stmt;
 class AssignmentStmt;
+class ProcedureCallStmt;
 class IfStmt;
+class ReturnStmt;
 }  // namespace tinylang

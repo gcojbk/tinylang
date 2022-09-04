@@ -43,6 +43,24 @@ class AssignmentStmt : public Stmt {
     Expr* expr_;
 };
 
+class ProcedureCallStmt : public Stmt {
+ public:
+    ProcedureCallStmt(ProcedureDecl* decl, ExprList& params)
+        : Stmt(SK_ProcCall), proc_(decl), params_(params) {}
+
+    ProcedureDecl* GetDecl() {
+        return proc_;
+    }
+
+    const ExprList& GetParams() {
+        return params_;
+    }
+
+ private:
+    ProcedureDecl* proc_;
+    ExprList params_;
+};
+
 class IfStmt : public Stmt {
  public:
     IfStmt(Expr* condition, StmtList& if_stmts, StmtList& else_stmts)
@@ -67,4 +85,17 @@ class IfStmt : public Stmt {
     StmtList else_stmts_;
 };
 
+class ReturnStmt : public Stmt {
+ public:
+    ReturnStmt(Expr* ret_val)
+        : Stmt(SK_Return), ret_val_(ret_val) {}
+
+ public:
+    Expr* GetRetVal() {
+        return ret_val_;
+    }
+
+ private:
+    Expr* ret_val_;
+};
 }  // namespace tinylang

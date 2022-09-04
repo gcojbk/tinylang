@@ -120,7 +120,7 @@ class ProcedureDecl : public Decl {
         return formal_params_;
     }
 
-    TypeDecl* GetType() {
+    TypeDecl* GetRetType() {
         return type_;
     }
 

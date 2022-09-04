@@ -157,4 +157,36 @@ class VariableAccess : public Expr {
  private:
     Decl* var_;
 };
+
+class ConstantAccess : public Expr {
+ public:
+    ConstantAccess(ConstantDecl* decl)
+        : Expr(EK_Const, decl->GetValue()->GetType()), decl_(decl) {}
+
+ public:
+    ConstantDecl* GetDecl() {
+        return decl_;
+    }
+
+ private:
+    ConstantDecl* decl_;
+};
+
+class FunctionCallExpr : public Expr {
+ public:
+    FunctionCallExpr(ProcedureDecl* proc, ExprList& params)
+        : Expr(EK_Func, proc->GetRetType()), proc_(proc), params_(params) {}
+
+    ProcedureDecl* GetDecl() {
+        return proc_;
+    }
+
+    const ExprList& GetParams() {
+        return params_;
+    }
+
+ private:
+    ProcedureDecl* proc_;
+    ExprList params_;
+};
 }  // namespace tinylang
